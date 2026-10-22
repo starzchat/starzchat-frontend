@@ -1,0 +1,541 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--bg);
+  .auth-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 28px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .auth-tab.active {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .auth-error {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--danger);
+    padding: 10px 12px;
+  .sidebar-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .user-badge .username {
+    display: block;
+    font-size: 1rem;
+    color: var(--text);
+  }
+
+  .user-badge .student-id {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .sidebar-actions {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .action-row {
+    display: flex;
+    gap: 6px;
+  }
+
+  .nav-tabs {
+    display: flex;
+  }
+
+  .message-bubble {
+    max-width: 72%;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  .message-bubble.mine {
+    background: #1d4ed8;
+    border-color: #2563eb;
+    align-self: flex-end;
+  }
+
+  .message-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .message-bubble.mine .message-header {
+    color: #bfdbfe;
+  }
+
+  .message-sender {
+    font-weight: 600;
+  }
+
+  .message-expired {
+    font-size: 0.65rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .message-body {
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 1.5;
+  }
+
+  .message-edited {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-align: right;
+    margin-top: 4px;
+  }
+
+  .message-bubble.mine .message-edited {
+    color: #bfdbfe;
+  }
+
+  .composer {
+    padding: 14px 20px;
+    border-top: 1px solid var(--border);
+    background: var(--panel);
+    display: flex;
+    gap: 10px;
+  }
+
+  .composer-input {
+    flex: 1;
+    min-height: 48px;
+    padding: 10px 14px;
+  }
+
+  .composer-send {
+    padding: 10px 18px;
+    font-size: 0.95rem;
+  }
+
+  .saved-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .saved-message {
+    max-width: 100%;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    margin-bottom: 8px;
+  }
+
+  .saved-message-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+
+  .saved-message-body {
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 1.5;
+  }
+
+  .saved-message-actions {
+    margin-top: 6px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+}
+
+    border-bottom: 1px solid var(--border);
+    padding: 0 8px;
+  }
+
+  .nav-tab {
+    flex: 1;
+    padding: 10px;
+    background: transparent;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    font-weight: 600;
+    margin-bottom: -1px;
+  }
+
+  .nav-tab.active {
+    color: var(--text);
+    border-bottom-color: var(--accent);
+  }
+
+  .chat-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px;
+  }
+
+  .chat-item {
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.15s;
+  }
+
+  .chat-item:hover {
+    background: var(--panel-hover);
+  }
+
+  .chat-item.active {
+    background: var(--accent);
+  }
+
+  .chat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .chat-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .chat-last-message {
+    font-size: 0.8rem;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .chat-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    min-width: 40px;
+    text-align: right;
+  }
+
+  .unread-badge {
+    background: var(--danger);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .chat-time {
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+
+  .empty-state {
+    margin: auto;
+    color: var(--muted);
+    text-align: center;
+    padding: 40px;
+  }
+
+  .main-area {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background: var(--bg);
+  }
+
+  .chat-detail {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .chat-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--panel);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .chat-title {
+    font-size: 1.1rem;
+  }
+
+  .chat-controls {
+    display: flex;
+    gap: 8px;
+  }
+
+  .messages-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+    border-radius: 6px;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .btn-primary {
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .field label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  .button-sm {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+
+  .search-input {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+
+  .app-view {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    min-width: 320px;
+    height: 100vh;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .sidebar-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .user-badge .username {
+    display: block;
+    font-size: 1rem;
+    color: var(--text);
+  }
+
+  .user-badge .student-id {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .sidebar-actions {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .action-row {
+    display: flex;
+    gap: 6px;
+  }
+
+
+  .auth-brand {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .auth-logo {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .auth-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .auth-sub {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-top: 4px;
+  }
+
+  .auth-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .auth-tab {
+    flex: 1;
+    padding: 10px;
+    background: transparent;
+    color: var(--muted);
+    border-radius: 8px;
+    font-weight: 600;
+  }
+
+  .auth-tab.active {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .auth-error {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--danger);
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    margin-bottom: 16px;
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .btn-primary {
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .field label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  .button-sm {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+
+  .search-input {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+
+  .app-view {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    min-width: 320px;
+    height: 100vh;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .sidebar-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .user-badge .username {
+    display: block;
+    font-size: 1rem;
+    color: var(--text);
+  }
+
+  .user-badge .student-id {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .sidebar-actions {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .action-row {
+    display: flex;
+    gap: 6px;
+  }
+
