@@ -42,6 +42,6 @@ export default defineConfig({
     sourcemap: false
   },
   optimizeDeps: {
-    exclude: ['socket.io-client']
+    include: ['socket.io-client', 'debug']
   }
 });

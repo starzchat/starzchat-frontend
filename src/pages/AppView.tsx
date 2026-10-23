@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { UserPayload } from '../lib/types';
+import type { UserPayload } from '../lib/types';
+import { initAuth } from '../lib/api';
 import { ChatListSidebar } from './ChatListSidebar';
 import { ChatDetail } from './ChatDetail';
 import { SavedMessagesPanel } from './SavedMessagesPanel';
@@ -9,26 +10,30 @@ interface AppViewProps {
 }
 
 export function AppView({ user }: AppViewProps) {
-  const [activePanel, setActivePanel] = useState<'chats' | 'saved'>('chats');
+  const [panel, setPanel] = useState<'chats' | 'saved'>('chats');
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const logout = () => {
+    initAuth(null);
+    try { localStorage.removeItem('starzchat_token'); } catch { /* ignore */ }
+    window.location.reload();
+  };
 
   return (
     <div className="app-view">
-      {activePanel === 'chats' && (
-        <>
-          <main className="main-area">
-            <ChatDetail />
-          </main>
-        </>
-      )}
-
-      {activePanel === 'saved' && (
-        <>
-          <ChatListSidebar user={user} />
-          <main className="main-area">
-            <SavedMessagesPanel />
-          </main>
-        </>
-      )}
+      <button className="menu-btn" onClick={() => setMenuOpen(true)} aria-label="Open menu">☰</button>
+      <div className={`sidebar-backdrop ${menuOpen ? 'open' : ''}`} onClick={() => setMenuOpen(false)} />
+      <ChatListSidebar
+        user={user}
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        onLogout={logout}
+        panel={panel}
+        onPanel={setPanel}
+      />
+      <main className="main-area">
+        {panel === 'chats' ? <ChatDetail /> : <SavedMessagesPanel />}
+      </main>
     </div>
   );
 }
