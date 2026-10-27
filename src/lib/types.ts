@@ -125,3 +125,50 @@ export interface ReadReceiptPayload {
   chat_id: number;
   message_id: number;
 }
+
+/* ---------- Social Feed ---------- */
+export interface Story {
+  id: string;
+  user_id: number;
+  username: string;
+  display_name: string | null;
+  avatar_url: string | null;
+  created_at: string;
+  expired: boolean;
+}
+
+export interface Post {
+  id: number;
+  user_id: number;
+  username: string;
+  display_name: string | null;
+  avatar_url: string | null;
+  content: string;
+  image_url: string | null;
+  location: string | null;
+  created_at: string;
+  like_count: number;
+  comment_count: number;
+  is_liked: boolean;
+}
+
+/* ---------- Alarm ---------- */
+export interface Alarm {
+  id: number;
+  time: string;        // "HH:MM"
+  period: 'AM' | 'PM';
+  ringtone: string;
+  ring_duration: string;   // e.g. "5 minutes"
+  class_mode: string;      // e.g. "Class 1 (Morning)"
+  active: boolean;
+  created_at: string;
+}
+
+export interface AlarmFormValues {
+  hour: string;
+  minute: string;
+  period: 'AM' | 'PM';
+  ringtone: string;
+  ring_duration: string;
+  class_mode: string;
+}
